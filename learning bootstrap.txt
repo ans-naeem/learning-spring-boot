@@ -1,0 +1,20 @@
+https://youtu.be/9SGDpanrc8U?si=N2XOi3FsYPKqKyy9
+
+1:00:03
+
+download notepad++ 
+
+spring boot 2.1.17 is not compatible with java 21 we need to downgrade it to 17 to make it compatible
+other wise errors occurs while executing the code.
+
+
+
+to find the proccess id listening to the specific port:
+------------------------------------------------------
+netstat -ano | findstr :8080
+
+to kill some task:
+-------------------
+taskkill /PID 21192 /F
+
+
