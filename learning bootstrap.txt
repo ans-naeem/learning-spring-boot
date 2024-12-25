@@ -18,3 +18,22 @@ to kill some task:
 taskkill /PID 21192 /F
 
 
+Annotations:
+--------------
+@RestController to tell this is a controller
+@RequestMappings to tell this controller maps to this request same like in flask we do 
+		@app.route('/')
+		def index():     
+		  ...
+
+In Spring boot we do 
+
+@RestController 
+public class controller
+{
+	@RequestMappings('/hello')
+	{
+		return ...;
+	}
+}
+
