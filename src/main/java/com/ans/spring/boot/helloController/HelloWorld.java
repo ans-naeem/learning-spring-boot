@@ -10,4 +10,10 @@ public class HelloWorld {
     {
         return "Salam!!";
     }
+
+    @RequestMapping("/greet")
+    public String greet()
+    {
+        return "how you doing Sir!";
+    }
 }
