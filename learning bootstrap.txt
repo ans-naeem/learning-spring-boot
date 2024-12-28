@@ -4,6 +4,10 @@ https://youtu.be/9SGDpanrc8U?si=N2XOi3FsYPKqKyy9
 
 download notepad++ 
 
+Note:
+We dont need to tell explicitly where the task is placed it automatically have a bird's eye view of the project and know where it is.
+
+
 spring boot 2.1.17 is not compatible with java 21 we need to downgrade it to 17 to make it compatible
 other wise errors occurs while executing the code.
 
@@ -25,6 +29,9 @@ Annotations:
 		@app.route('/')
 		def index():     
 		  ...
+@PathVariable to tell the spring boot that use the integer variable passed in the URL.
+@AutoWired use Some specific Service inside the controller very important topic called dependency Injection
+@Service is use to define some service which controller called by instansiating the service class with autowired anotation.
 
 In Spring boot we do 
 
