@@ -24,6 +24,17 @@ public class todoService {
 
     public task gettask(Integer id)
     {
-        return tasks.stream().filter(T ->T.id.equals(id)).findFirst().get();
+        return tasks.stream().filter(T ->T.id.equals(id)).findFirst().orElse(null);
+    }
+
+    public boolean setTask(task td) {
+        try {
+            tasks.add(td);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+
+        }
+
     }
 }
