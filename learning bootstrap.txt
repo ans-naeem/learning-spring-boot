@@ -29,9 +29,6 @@ Annotations:
 		@app.route('/')
 		def index():     
 		  ...
-@PathVariable to tell the spring boot that use the integer variable passed in the URL.
-@AutoWired use Some specific Service inside the controller very important topic called dependency Injection
-@Service is use to define some service which controller called by instansiating the service class with autowired anotation.
 
 In Spring boot we do 
 
@@ -44,3 +41,9 @@ public class controller
 	}
 }
 
+
+@PathVariable to tell the spring boot that use the integer variable passed in the URL.
+@AutoWired use Some specific Service inside the controller very important topic called dependency Injection
+@Service is use to define some service which controller called by instansiating the service class with autowired anotation.
+
+@requestbody is use to bind the http request object with the (POJO) java object.
