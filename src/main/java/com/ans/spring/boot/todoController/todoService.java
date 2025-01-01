@@ -37,4 +37,33 @@ public class todoService {
         }
 
     }
+
+    public boolean updateTask(task td) {
+        for(int i=0;i<tasks.size();i++)
+        {
+            if(tasks.get(i).getId().equals(td.getId()))
+            {
+                tasks.set(i,td);
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public boolean deleteTask(Integer id) {
+//        for(int i=0;i<tasks.size();i++)
+//        {
+//            if(tasks.get(i).getId().equals(id))
+//            {
+//                tasks.remove(i);
+//            }
+//        }
+
+        if(tasks.removeIf(t->t.getId().equals(id)))
+        {
+            return true;
+        }
+        return false;
+    }
 }
