@@ -47,3 +47,7 @@ public class controller
 @Service is use to define some service which controller called by instansiating the service class with autowired anotation.
 
 @requestbody is use to bind the http request object with the (POJO) java object.
+
+@Entity is use to tell the JPA that its an entity and shouldbe mapped.
+
+@Id is use to tell its a primary key and can be used to uniquely identify the data.

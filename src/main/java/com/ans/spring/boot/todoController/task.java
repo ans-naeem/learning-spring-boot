@@ -1,7 +1,12 @@
 package com.ans.spring.boot.todoController;
 
+import jakarta.persistence.Entity;
+import org.springframework.data.annotation.Id;
+
+@Entity
 public class task {
 
+    @Id
     Integer id;
     String name;
     String summary;
