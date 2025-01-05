@@ -7,7 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-
+        try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            System.out.println("Derby Driver Found!");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Derby Driver Not Found!");
+        }
         SpringApplication.run(Main.class,args);
 
 //        System.out.printf("Hello and welcome!");

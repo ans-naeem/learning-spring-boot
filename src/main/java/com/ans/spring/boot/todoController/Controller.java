@@ -52,12 +52,7 @@ public class Controller {
     @RequestMapping(method = RequestMethod.DELETE,value = "/delete/{id}")
     public String deleteTask(@PathVariable Integer id)
     {
-        if (todoservice.deleteTask(id))
-        {
-            return "deleted";
-        }else {
-            return "not deleted";
-        }
-
+        todoservice.deleteTask(id);
+        return "deleted";
     }
 }

@@ -1,6 +1,8 @@
 package com.ans.spring.boot.todoController;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @Service
 public class todoService {
 
+    private static final Logger log = LoggerFactory.getLogger(todoService.class);
     @Autowired
     private todoRepository todoRepo;
 
@@ -28,17 +31,32 @@ public class todoService {
     }
 
     public boolean setTask(task td) {
-        return true;
+        try{
+            todoRepo.save(td);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     public boolean updateTask(task td) {
 
-        return false;
-
+        try{
+            todoRepo.save(td);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public boolean deleteTask(Integer id) {
+    public void deleteTask(Integer id) {
+        try {
+            todoRepo.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
 //        for(int i=0;i<tasks.size();i++)
 //        {
 //            if(tasks.get(i).getId().equals(id))
@@ -48,6 +66,5 @@ public class todoService {
 //        }
 
 
-        return false;
     }
 }
