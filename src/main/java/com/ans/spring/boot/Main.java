@@ -3,16 +3,13 @@ package com.ans.spring.boot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class Main {
     public static void main(String[] args) {
-        try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            System.out.println("Derby Driver Found!");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Derby Driver Not Found!");
-        }
+
         SpringApplication.run(Main.class,args);
 
 //        System.out.printf("Hello and welcome!");

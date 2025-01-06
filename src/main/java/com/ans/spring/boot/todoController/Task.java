@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class task {
+public class Task {
 
     @Id
     Integer id;
@@ -12,10 +12,10 @@ public class task {
     String summary;
     String desc;
 
-    public task() {
+    public Task() {
     }
 
-    public task(Integer id, String name, String summary, String desc) {
+    public Task(Integer id, String name, String summary, String desc) {
         this.id = id;
         this.name = name;
         this.summary = summary;
