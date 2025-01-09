@@ -1,6 +1,7 @@
 package com.ans.spring.boot.todoController;
 
 
+import com.ans.spring.boot.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class todoService {
 
         return lists;
     }
-
+/*
     public Task gettask(Integer id)
     {
         return todoRepo.findById(id).get();
@@ -62,5 +63,5 @@ public class todoService {
 //        }
 
 
-    }
+    }*/
 }

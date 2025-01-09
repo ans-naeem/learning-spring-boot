@@ -16,7 +16,7 @@ public class Controller {
     {
         return todoservice.getalltasks();
     }
-
+/*
     @RequestMapping("/Task/{id}")
     public Task gettask(@PathVariable Integer id){
         return todoservice.gettask(id);
@@ -54,5 +54,5 @@ public class Controller {
     {
         todoservice.deleteTask(id);
         return "deleted";
-    }
+    }*/
 }
