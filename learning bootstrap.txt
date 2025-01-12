@@ -52,3 +52,29 @@ public class controller
 @Entity is use to tell the JPA that its an entity and shouldbe mapped.
 
 @Id is use to tell its a primary key and can be used to uniquely identify the data.
+
+
+
+------------------------------------------
+Shiva labs:spring boot tips part 1
+https://youtu.be/2dPon1G5S-M?si=y2lq8_X48moxrbIh
+
+In pom when we define some dependency we usually use the parent project of dependency eg.
+
+<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.2</version>
+    </parent>
+
+its our parent project and inside there are lot of dependencies under <dependency managment> tag present with version id specified in it. we usually use that and if we want to use some latest 
+dependency so we exclude it like this:
+ 			<exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+
+and add seperate depency in properties so that required version can be import.(<properties>) also some time transitive dependency create the problem so it is necessary to have a crisp
+idea about that.
+
+Shiva labs:spring boot tips part 2
