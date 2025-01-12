@@ -12,20 +12,20 @@ public class Controller {
     private todoService todoservice;
 
     @RequestMapping("/tasks")
-    public List<Task> getalltasks()
+    public List<TodoTask> getalltasks()
     {
         return todoservice.getalltasks();
     }
-/*
+
     @RequestMapping("/Task/{id}")
-    public Task gettask(@PathVariable Integer id){
+    public TodoTask gettask(@PathVariable Integer id){
         return todoservice.gettask(id);
     }
 
 
     //to enter the todo Task in to the data.
     @RequestMapping(method = RequestMethod.POST,value = "/todo")
-    public String createtodo(@RequestBody Task td)
+    public String createtodo(@RequestBody TodoTask td)
     {
         if(todoservice.setTask(td)){
             return "Record entered successfully";
@@ -33,26 +33,26 @@ public class Controller {
             return "Task cant be added";
         }
     }
-
-    //we are going to implement an endpoint to update our Task.
-    @RequestMapping(method = RequestMethod.PUT,value = "/updatetask")
-    public String updateTask(@RequestBody Task td)
-    {
-        if(todoservice.updateTask(td))
-        {
-            return "Task updated";
-        }
-        else{
-            return "Task cant be updated as there is no such Task of such id:"+td.getId();
-        }
-
-    }
-
-    //we are implementing to delete our Task.
-    @RequestMapping(method = RequestMethod.DELETE,value = "/delete/{id}")
-    public String deleteTask(@PathVariable Integer id)
-    {
-        todoservice.deleteTask(id);
-        return "deleted";
-    }*/
+//
+//    //we are going to implement an endpoint to update our Task.
+//    @RequestMapping(method = RequestMethod.PUT,value = "/updatetask")
+//    public String updateTask(@RequestBody TodoTask td)
+//    {
+//        if(todoservice.updateTask(td))
+//        {
+//            return "Task updated";
+//        }
+//        else{
+//            return "Task cant be updated as there is no such Task of such id:"+td.getId();
+//        }
+//
+//    }
+//
+//    //we are implementing to delete our Task.
+//    @RequestMapping(method = RequestMethod.DELETE,value = "/delete/{id}")
+//    public String deleteTask(@PathVariable Integer id)
+//    {
+//        todoservice.deleteTask(id);
+//        return "deleted";
+//    }
 }

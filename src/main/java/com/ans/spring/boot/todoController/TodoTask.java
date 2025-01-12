@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tasks")
-public class Task {
+public class TodoTask {
 
     @Id
     Integer id;
@@ -15,10 +15,10 @@ public class Task {
     String summary;
     String desc;
 
-    public Task() {
+    public TodoTask() {
     }
 
-    public Task(Integer id, String name, String summary, String desc) {
+    public TodoTask(Integer id, String name, String summary, String desc) {
         this.id = id;
         this.name = name;
         this.summary = summary;

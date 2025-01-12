@@ -1,7 +1,7 @@
 package com.ans.spring.boot.todoController;
 
 
-import com.ans.spring.boot.repository.ToDoRepository;
+import com.ans.spring.boot.Repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,27 @@ public class todoService {
     @Autowired
     private ToDoRepository todoRepo;
 
-    public List<Task> getalltasks()
+    public List<TodoTask> getalltasks()
     {
-        List<Task> lists=new ArrayList<>();
+        List<TodoTask> lists=new ArrayList<>();
         todoRepo.findAll().forEach(lists::add);
 
         return lists;
+    }
+
+    public boolean setTask(TodoTask td) {
+        try
+        {
+            todoRepo.save(td);
+            return true;
+        }catch (Exception e)
+        {
+            return false;
+        }
+    }
+
+    public TodoTask gettask(Integer id) {
+        return todoRepo.findById(id).get();
     }
 /*
     public Task gettask(Integer id)
