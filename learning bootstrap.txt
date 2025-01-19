@@ -78,3 +78,69 @@ and add seperate depency in properties so that required version can be import.(<
 idea about that.
 
 Shiva labs:spring boot tips part 2
+--------------------------------------
+Spring boot configuration options:
+1->Default values:
+EX: application.properties
+
+2->profile specific overrides.
+EX: application-{profile}.properties
+
+3->Environment variables  (higest property)
+EX: SERVER_PORT=9090
+
+
+we can make a class implemment from CommandLineRunner and get the value using this syntax:
+@Component
+class Appinitializer implements CommandLineRunner{
+
+    @Value("${app.version}")
+    private String appversion;
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("The app version is "+appversion);
+    }
+}
+
+if we have large number of properties than its very tidious way to get the value one by one there is another method.
+
+just create a class and anotate it with @ConfigurationProperties and tell which prefix it should look into EX: app.version(app is prefix).To get the value of 
+app.datasource.url we need to have a nested static class because spring boot cant be able to instansiate without having an object of outer class
+result in not binding the variables with values.
+
+Also you need to tell at entry point of spring boot application that 
+@EnableConfigurationProperties({ApplicationProperties.class}) //you can pass as many classes as you want in it
+
+
+
+@ConfigurationProperties(prefix = "app")
+public class ApplicationProperties {
+
+    //it should be same present in application.properties file
+    String version;
+    String author;
+    DataSoruce datasource;
+	//implement all getter and setters.
+    //inner class
+
+    public static class DataSource{
+        String url;
+        String driverClassName;
+        String username;
+
+       //immplement all setter and getter.
+
+        @Override
+        public String toString() {
+            return "DataSoruce{" +
+                    "url='" + url + '\'' +
+                    ", driverClassName='" + driverClassName + '\'' +
+                    ", username='" + username + '\'' +
+                    '}';
+        }
+    }
+
+    
+	
+
