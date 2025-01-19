@@ -38,12 +38,12 @@ class Appinitializer implements CommandLineRunner{
 
     @Autowired
     public ApplicationProperties property;
+
     @Override
     public void run(String... args) throws Exception {
         System.out.println("The app version is "+appversion);
 
-        System.out.println("The version is :"+property.version+"\n The author is: "+property.getAuthor());
-        System.out.println("The app.datasource values are "+property.datasource.toString());
+        System.out.println("The app.datasource values are "+property);
 
     }
 }

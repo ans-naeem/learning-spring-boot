@@ -125,7 +125,7 @@ public class ApplicationProperties {
     //inner class
 
     public static class DataSource{
-        String url;
+        String url; 
         String driverClassName;
         String username;
 
@@ -140,6 +140,20 @@ public class ApplicationProperties {
                     '}';
         }
     }
+
+
+we can validate our application proerties using java validation api.
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+add @Validated in you applicationproperty.java class
+
+You can use records in java if you want unmutable objects it could bind automatically but i would prefer the use of class.
+as illustrated above.
+
+
 
     
 	
