@@ -53,6 +53,47 @@ public class controller
 
 @Id is use to tell its a primary key and can be used to uniquely identify the data.
 
+------------------------------------------------------------------------------------------
+Caching in Bootstrap using caffine.
+
+1-->Add dependency in pom
+	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
+2-->define the properties in application.properties that when should expire what is the name and so on.
+	spring.cache.cache-names=hello
+	spring.cache.caffeine.spec=maximumSize=500,expireAfterAccess=600s
+					OR
+Define a config class like that 
+@Configuration
+public class CaffeineCacheConfig {
+
+ @Bean
+ public CacheManager cacheManager() {
+  CaffeineCacheManager cacheManager = new CaffeineCacheManager("customer");
+  cacheManager.setCaffeine(caffeineCacheBuilder());
+  return cacheManager;
+ }
+
+ Caffeine < Object, Object > caffeineCacheBuilder() {
+  return Caffeine.newBuilder()
+   .initialCapacity(100)
+   .maximumSize(500)
+   .expireAfterAccess(10, TimeUnit.MINUTES)
+   .weakKeys()
+   .recordStats();
+ }
+}
+
+3-->Tell the spring boot at starting point that @EnableCaching
+
+4-->Define @Cacheable("cachename") in that route on which you want spring boot to cache.
 
 
 ------------------------------------------
