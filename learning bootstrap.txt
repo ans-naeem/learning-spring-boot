@@ -48,7 +48,13 @@ public class controller
 @Service is use to define some service which controller called by instansiating the service class with autowired anotation.
 
 @requestbody is use to bind the http request object with the (POJO) java object.
+	Purpose: Used to bind the entire body of an HTTP request to an object.
 
+@requestParam is use to extract parameter values from the data passed in URL or query  in function arguments contrary to requestbody which binds with the post request.
+	Purpose: Used to extract query parameters, form data, or values from the URL.
+	Example:GET /api/users?id=123&name=John
+	    public String getUser(@RequestParam("id") int id, @RequestParam("name") String name) {
+ 
 @Entity is use to tell the JPA that its an entity and shouldbe mapped.
 
 @Id is use to tell its a primary key and can be used to uniquely identify the data.
@@ -147,8 +153,8 @@ class Appinitializer implements CommandLineRunner{
 if we have large number of properties than its very tidious way to get the value one by one there is another method.
 
 just create a class and anotate it with @ConfigurationProperties and tell which prefix it should look into EX: app.version(app is prefix).To get the value of 
-app.datasource.url we need to have a nested static class because spring boot cant be able to instansiate without having an object of outer class
-result in not binding the variables with values.
+app.datasource.url we need to have a nested static class(Static because spring boot cant be able to instansiate without having an object 
+of outer class result in not binding the variables with values).
 
 Also you need to tell at entry point of spring boot application that 
 @EnableConfigurationProperties({ApplicationProperties.class}) //you can pass as many classes as you want in it
@@ -195,7 +201,30 @@ You can use records in java if you want unmutable objects it could bind automati
 as illustrated above.
 
 
+Shiva labs:spring boot tips part 3
+--------------------------------------
+Logging in spring boot.
 
-    
+If we want to make a file of logs then we can tell spring boot to make a file and dump all the logs in it by simply adding this in our application.properties.
+logging.file.name=myapp.logs
+
+We can also tell spring boot to log different pakages on a different level in a project:
+Log LEVEL
+eg:     logging.level.org.springframework=INFO
+	logging.level.com.ans.spring.boot.Repositories=DEBUG; and so on
+
+we can also make a group of pacakages and tell that group should log in that leve like
+logging.group.ansservice=com.ans.spring.boot.Repositories,org.springframework
+logging.level.ansservice=DEBUG  # now tell the compiler that its a group and change its log level
+
+Mapped diagnostic context.(MDC)
+let say we have an api and we want whenever this api called there should be trace of which user called it in logs.
+For this we can use MDC.put(userid="id") and add in 
+logging.pattern.console =...%clr(userId :%X {userid:-Guest}  (the :-Guest is the default value)
+ 
+The default library which is defined in spring boot starter web pacakage is logback but if we want to use log4j2 instead we first tell the spring boot by excluding 
+from starter web and add mmanually the log4j2 dependency
+
+
 	
 
